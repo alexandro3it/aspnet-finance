@@ -107,9 +107,9 @@ Abrir a Janela - Test Explorer, clicar no botão Run ou Run All Tests In View
 ## Pasta de documentos.
 
 - /docs
--- /c4model - Desenho da solução do nível mais macro ao nível nivel mais detalhado para frontend e backend.
--- /mindmap - Mapa mental da aplicação.
--- /MER - Modelagem Entidade Relacionamento do banco de dados.
+    - /c4model - Desenho da solução do nível mais macro ao nível nivel mais detalhado para frontend e backend.
+    - /mindmap - Mapa mental da aplicação.
+    - /MER - Modelagem Entidade Relacionamento do banco de dados.
 
 
 [//]: # (These are reference links used in the body of this note and get stripped out when the markdown processor does its job. There is no need to format nicely because it shouldn't be seen. Thanks SO - http://stackoverflow.com/questions/4823468/store-comments-in-markdown-syntax)
