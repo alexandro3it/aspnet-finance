@@ -43,7 +43,7 @@ Algumas das tecnologias utilizadas:
 
 ## Construção/Execução
 
-Aplicação Web
+### Aplicação Web
 
 Utilizando linha comando como powershell(Terminal):
 
@@ -81,7 +81,7 @@ Definir o projeto ASPFinance como projeto principal
 F5 para Compilar/Executar ou menu Debug/Start Debugging
 ```
 
-Execução de Testes
+### Execução de Testes
 
 Utilizando linha comando como powershell(Terminal):
 
@@ -91,6 +91,7 @@ Utilizando linha comando como powershell(Terminal):
 cd [dir]
 dotnet build
 dotnet test
+```
 
 Utilizando Visual Studio
 
