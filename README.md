@@ -8,17 +8,17 @@ Desenvolvido principalmente na tecnologia ASP.Net Core 6.
 ## Funcionalidades
 
 - Lançamento de Créditos diários
--- Pode ser feita a listagem inicial com todos os Lançamentos de créditos cadastrados;
--- Pode set feita a Inclusão de novos lançamentos através da opção "Lançar um novo crédito";
--- Pode set feita a Alteração de lançamentos cadastrados através da opção "Alterar";
--- Pode set feita a Exclusão de lançamentos cadastrados através da opção "Excluir";
+    - Pode ser feita a listagem inicial com todos os Lançamentos de créditos cadastrados;
+    - Pode set feita a Inclusão de novos lançamentos através da opção "Lançar um novo crédito";
+    - Pode set feita a Alteração de lançamentos cadastrados através da opção "Alterar";
+    - Pode set feita a Exclusão de lançamentos cadastrados através da opção "Excluir";
 - Lançamento de Débitos diários
--- Pode ser feita a listagem inicial com todos os Lançamentos de débitos cadastrados;
--- Pode set feita a Inclusão de novos lançamentos através da opção "Lançar um novo débito";
--- Pode set feita a Alteração de lançamentos cadastrados através da opção "Alterar";
--- Pode set feita a Exclusão de lançamentos cadastrados através da opção "Excluir";
+    - Pode ser feita a listagem inicial com todos os Lançamentos de débitos cadastrados;
+    - Pode set feita a Inclusão de novos lançamentos através da opção "Lançar um novo débito";
+    - Pode set feita a Alteração de lançamentos cadastrados através da opção "Alterar";
+    - Pode set feita a Exclusão de lançamentos cadastrados através da opção "Excluir";
 - Relatório com Saldo diário por período
--- Pode ser feita a listagem inicial com o período selecionado com todos os Lançamentos de Créditos/Débitos lançados, assim resultando em uma planilha com a sumarização dos mesmo por dia, com Saldo Inicial, Total de entrada(s), Total de saída(s) e Saldo final ;
+    - Pode ser feita a listagem inicial com o período selecionado com todos os Lançamentos de Créditos/Débitos lançados, assim resultando em uma planilha com a sumarização dos mesmo por dia, com Saldo Inicial, Total de entrada(s), Total de saída(s) e Saldo final ;
 
 
 ## Tecnologias
