@@ -1,0 +1,117 @@
+﻿@model ASPFinance.Model.Data.Credit
+
+<h4>Crédito</h4>
+<hr />
+<div class="row">
+	<div class="col-md-4">
+		<form id="myForm" asp-action="Create">
+			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+			<div class="form-group" hidden>
+				<label asp-for="Date" class="control-label"></label>
+				<input asp-for="Date" class="datepicker form-control" disabled />
+				<span asp-validation-for="Date" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="Title" class="control-label"></label>
+				<input asp-for="Title" class="form-control" />
+				<span asp-validation-for="Title" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="Descripton" class="control-label"></label>
+				<input asp-for="Descripton" class="form-control" />
+				<span asp-validation-for="Descripton" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="CreditDay" class="control-label"></label>
+				<input type="text" id="CreditDay" name="CreditDay" value="@Model.CreditDay.ToShortDateString()" class="datepicker form-control" />
+				<span asp-validation-for="CreditDay" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="Value" class="control-label"></label>
+				<input type="text" step="0.01" id="Value" name="Value" class="numberonly form-control" required />
+				<span asp-validation-for="Value" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="CustomerId" class="control-label"></label>
+				<select asp-for="CustomerId" asp-items="@ViewBag.Customers" class="form-control"></select>
+				<span asp-validation-for="CustomerId" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<br />
+			</div>
+			<div class="form-group">
+				<input type="button" value="Salvar" class="btn btn-primary" onclick="submitR()" />
+			</div>
+			<div class="form-group">
+				<br />
+			</div>
+		</form>
+	</div>
+</div>
+<hr />
+<div>
+	<a asp-action="Index">Voltar a lista</a>
+</div>
+
+
+@section Scripts {
+	@{
+		await Html.RenderPartialAsync("_ValidationScriptsPartial");
+	}
+
+	<script type="text/javascript" language="javascript">
+
+		function submitR() {
+			$("#Value").attr("type", "number");
+			$("#Value").val(Number.parseFloat($("#Value").text()).toFixed(2));
+			$("form:first").submit();
+		}
+
+		$(function () {
+			$('.datepicker').datepicker({
+				dateFormat: 'dd/mm/yy',
+				dayNames: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'],
+				dayNamesMin: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S', 'D'],
+				dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'],
+				monthNames: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+				monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+				nextText: 'Proximo',
+				prevText: 'Anterior'
+			}).css("display", "inline-block")
+				.next("button").button({
+					icons: { primary: "ui-icon-calendar" },
+					label: "Selecione uma data",
+					text: false
+				});
+
+			$(".numberonly").focus(function () {
+				let value = $(this).val().replace('R$', '').replace('/./g', '').replace(',', '');
+				$(this).attr("type", "number");
+				if (value) {
+					$(this).val(parseInt(value));
+				}
+			});
+
+			$(".numberonly").blur(function () {
+				$(this).attr("type", "text");
+				let value = parseFloat('0' + $(this).val().replace(/[\D]+/g, ''));
+				if (value.toString().length == 0) {
+					$(this).val(0);
+				}
+
+				if (value.toString().length > 2) {
+					let newValue = value.toString() + '';
+					newValue = newValue.replace(/([0-9]{2})$/g, ".$1");
+					if (newValue.length > 6) {
+						newValue = newValue.replace(/([0-9]{3}),([0-9]{2}$)/g, ",$1.$2");
+						console.log(newValue);
+					}
+
+					$(this).val(Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL' }).format(newValue));
+					$(this).text(newValue);
+				}
+			});
+		});
+
+	</script>
+}

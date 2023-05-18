@@ -1,0 +1,95 @@
+﻿@model IEnumerable<ASPFinance.Models.DailyBalanceViewModel>
+
+@{
+	ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+	<h2 class="display-5 fw-bold">Saldo diário</h2>
+</div>
+<hr />
+<form asp-action="Index" asp-controller="Home">
+	<div class="col-8 d-inline-flex">
+		<div class="col-4 m-2">
+			<label class="control-label">Período de:</label>
+			<input type="datetime" name="dataBegin" value="@ViewBag.DataBegin.ToString("dd/MM/yyyy")" class="datepicker form-control" />
+		</div>
+		<div class="col-4 m-2">
+			<label class="control-label">até:</label>
+			<input type="datetime" name="dataEnd" value="@ViewBag.DataEnd.ToString("dd/MM/yyyy")" class="datepicker form-control" />
+		</div>
+	</div>
+	<div class="col-4 m-2">
+		<input type="submit" value="Consultar" class="btn btn-primary" />
+	</div>
+</form>
+<br />
+<div class="text-center">
+	<table class="table">
+		<thead>
+			<tr>
+				<th>
+					@Html.DisplayNameFor(model => model.Date)
+				</th>
+				<th>
+					@Html.DisplayNameFor(model => model.PreviousValue)
+				</th>
+				<th>
+					@Html.DisplayNameFor(model => model.TotalInput)
+				</th>
+				<th>
+					@Html.DisplayNameFor(model => model.TotalOutput)
+				</th>
+				<th>
+					@Html.DisplayNameFor(model => model.FinalBalance)
+				</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			@if (Model is not null)
+				@foreach (var item in Model)
+				{
+					<tr>
+						<td>
+							@Html.DisplayFor(modelItem => item.Date)
+						</td>
+						<td>
+							@Html.DisplayFor(modelItem => item.PreviousValue)
+						</td>
+						<td>
+							@Html.DisplayFor(modelItem => item.TotalInput)
+						</td>
+						<td>
+							@Html.DisplayFor(modelItem => item.TotalOutput)
+						</td>
+						<td>
+							@Html.DisplayFor(modelItem => item.FinalBalance)
+						</td>
+					</tr>
+				}
+		</tbody>
+	</table>
+</div>
+
+@section Scripts {
+	<script type="text/javascript" language="javascript">
+		$(function () {			
+			$('.datepicker').datepicker({
+				dateFormat: 'dd/mm/yy',
+				dayNames: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'],
+				dayNamesMin: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S', 'D'],
+				dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'],
+				monthNames: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+				monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+				nextText: 'Proximo',
+				prevText: 'Anterior'
+			}).css("display", "inline-block")
+				.next("button").button({
+					icons: { primary: "ui-icon-calendar" },
+					label: "Selecione uma data",
+					text: false
+				});
+		});
+	</script>
+}
